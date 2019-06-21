@@ -1,6 +1,7 @@
 package com.lambdaschool.javabookstore.controllers;
 
 import com.lambdaschool.javabookstore.models.Book;
+import com.lambdaschool.javabookstore.models.ErrorDetail;
 import com.lambdaschool.javabookstore.models.Quote;
 import com.lambdaschool.javabookstore.services.DataService;
 import io.swagger.annotations.ApiOperation;
