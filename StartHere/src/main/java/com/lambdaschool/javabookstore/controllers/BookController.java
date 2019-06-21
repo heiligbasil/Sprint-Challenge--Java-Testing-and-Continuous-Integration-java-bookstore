@@ -28,7 +28,7 @@ public class BookController
     @Autowired
     BookService bookService;
 
-    //@PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     @ApiOperation(value = "Return all books", response = Book.class, responseContainer = "List")
     @ApiImplicitParams({@ApiImplicitParam(name = "page", dataType = "integer", paramType = "query", value = "Results page you want to retrieve (0..N)"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query", value = "Number of records per page."),
