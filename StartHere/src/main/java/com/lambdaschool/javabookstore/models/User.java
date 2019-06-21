@@ -19,22 +19,18 @@ public class User extends Auditable
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
 
-    @Column(nullable = false,
-            unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<UserRoles> userRoles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private List<Quote> quotes = new ArrayList<>();
 

@@ -24,7 +24,6 @@ public class RoleServiceImpl implements RoleService
         return list;
     }
 
-
     @Override
     public Role findRoleById(long id)
     {
@@ -39,8 +38,7 @@ public class RoleServiceImpl implements RoleService
         if (rr != null)
         {
             return rr;
-        }
-        else
+        } else
         {
             throw new EntityNotFoundException(name);
         }

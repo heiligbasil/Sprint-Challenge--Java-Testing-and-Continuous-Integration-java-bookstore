@@ -18,11 +18,9 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service(value = "userService")
 public class UserServiceImpl implements UserDetailsService, UserService
 {
-
     @Autowired
     private UserRepository userrepos;
 

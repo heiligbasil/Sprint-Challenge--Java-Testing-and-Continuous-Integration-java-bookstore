@@ -11,8 +11,8 @@
     <groupId>com.lambdaschool</groupId>
     <artifactId>authenticatedusers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>authenticatedusers</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Sprint 14 - Java Bookstore</name>
+    <description>Java Bookstore project for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
@@ -136,7 +136,7 @@
 
     <build>
 <!--        <finalName>${project.artifactId}</finalName>-->
-        <finalName>jrmmba-starthere</finalName>
+        <finalName>basil-javabookstore</finalName>
 
         <plugins>
             <plugin>
@@ -151,11 +151,11 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>2.0.3</version>
                 <configuration>
-                    <appName>jrmmba-starthere</appName>
+                    <appName>basil-javabookstore</appName>
                     <includeTarget>false</includeTarget>
                     <includes>
                         <!--   For windows      <include>${project.build.directory}\${project.build.finalName}.jar</include>-->
-                        <include>${project.build.directory}/${project.build.finalName}.jar</include>
+                        <include>${project.build.directory}\${project.build.finalName}.jar</include>
                     </includes>
                     <jdkVersion>${java.version}</jdkVersion>
                     <processTypes>

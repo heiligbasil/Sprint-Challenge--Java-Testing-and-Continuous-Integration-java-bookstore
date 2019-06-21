@@ -1,11 +1,11 @@
 package com.lambdaschool.javabookstore.services;
 
-        import com.lambdaschool.javabookstore.models.User;
+import com.lambdaschool.javabookstore.models.User;
 
-        import java.util.List;
+import java.util.List;
 
-public interface UserService {
-
+public interface UserService
+{
     List<User> findAll();
 
     User findUserById(long id);
