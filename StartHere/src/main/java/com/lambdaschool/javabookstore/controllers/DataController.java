@@ -3,6 +3,9 @@ package com.lambdaschool.javabookstore.controllers;
 import com.lambdaschool.javabookstore.models.Book;
 import com.lambdaschool.javabookstore.models.Quote;
 import com.lambdaschool.javabookstore.services.DataService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,10 @@ public class DataController
     DataService dataService;
 
     @PreAuthorize("hasAuthority('ROLE_DATA')")
+    @ApiOperation(value = "Updates a book associated with the book ID", response = Book.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Book Found", response = Book.class),
+            @ApiResponse(code = 404, message = "Book Not Found", response = ErrorDetail.class)})
     @PutMapping(value = "/books/{id}")
     public ResponseEntity<?> updateBook(HttpServletRequest request, @RequestBody Book updateBook, @PathVariable long id)
     {
@@ -39,6 +46,10 @@ public class DataController
     }
 
     @PreAuthorize("hasAuthority('ROLE_DATA')")
+    @ApiOperation(value = "Assigns a book ID associated with the author ID", response = Book.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Book Found", response = Book.class),
+            @ApiResponse(code = 404, message = "Book Not Found", response = ErrorDetail.class)})
     @PostMapping(value = "/books/{bookid}/authors/{authorid}")
     public ResponseEntity<?> assignBookToAuthor(HttpServletRequest request, @PathVariable long bookid, @PathVariable long authorid) throws URISyntaxException
     {
@@ -50,6 +61,10 @@ public class DataController
     }
 
     @PreAuthorize("hasAuthority('ROLE_DATA')")
+    @ApiOperation(value = "Deletes a book associated with the book ID", response = Book.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Book Found", response = Book.class),
+            @ApiResponse(code = 404, message = "Book Not Found", response = ErrorDetail.class)})
     @DeleteMapping("/books/{id}")
     public ResponseEntity<?> deleteBookById(HttpServletRequest request, @PathVariable long id)
     {
