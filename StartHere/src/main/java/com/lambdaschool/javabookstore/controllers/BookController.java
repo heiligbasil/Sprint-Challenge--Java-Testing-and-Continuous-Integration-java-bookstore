@@ -5,6 +5,7 @@ import com.lambdaschool.javabookstore.services.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,11 +27,11 @@ public class BookController
 
     //@PreAuthorize("hasAuthority('ROLE_USERS')")
     @GetMapping(value = "/all", produces = {"application/json"})
-    public ResponseEntity<?> listAllQuotes(HttpServletRequest request)
+    public ResponseEntity<?> listAllQuotes(HttpServletRequest request, Pageable pageable)
     {
         logger.trace(request.getRequestURI() + " accessed");
 
-        List<Book> allBooks = bookService.findAll();
+        List<Book> allBooks = bookService.findAll(pageable);
         return new ResponseEntity<>(allBooks, HttpStatus.OK);
     }
 }
