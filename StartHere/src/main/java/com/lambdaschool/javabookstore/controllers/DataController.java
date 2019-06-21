@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,6 +28,7 @@ public class DataController
     @Autowired
     DataService dataService;
 
+    @PreAuthorize("hasAuthority('ROLE_DATA')")
     @PutMapping(value = "/books/{id}")
     public ResponseEntity<?> updateBook(HttpServletRequest request, @RequestBody Book updateBook, @PathVariable long id)
     {
@@ -36,6 +38,7 @@ public class DataController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_DATA')")
     @PostMapping(value = "/books/{bookid}/authors/{authorid}")
     public ResponseEntity<?> assignBookToAuthor(HttpServletRequest request, @PathVariable long bookid, @PathVariable long authorid) throws URISyntaxException
     {
@@ -46,7 +49,7 @@ public class DataController
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @PreAuthorize("hasAuthority('ROLE_DATA')")
     @DeleteMapping("/books/{id}")
     public ResponseEntity<?> deleteBookById(HttpServletRequest request, @PathVariable long id)
     {
